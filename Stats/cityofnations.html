@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="CoN Stats">
+    <meta property="og:title" content="City of Nations stats">
+    <meta property="og:description" content="Stats of City of Nations, time played, online players, team info">
+    <meta property="og:image" content="https://www.city.dadodasyra.fr/img/logo.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@discord">
+    <meta name="twitter:creator" content="@yourtwitter">
+    <meta charset="UTF-8">
+    <title>CityOfNations Stats</title>
+    <link href="main.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="img/favicon.ico" rel="icon" type="image/png"/>
+    <script type="text/javascript">
+
+        document.addEventListener('click', function (e) {
+            e = e || window.event;
+            const target = e.target || e.srcElement, text = target.textContent || target.innerText;
+            switch (text) {
+                case "Players":
+                    document.getElementById('players').classList.remove("hide");
+                    document.getElementById('playTime').classList.add("hide");
+                    document.getElementById('about').classList.add("hide");
+                    break;
+                case "Time-Played":
+                    document.getElementById('players').classList.add("hide");
+                    document.getElementById('playTime').classList.remove("hide");
+                    document.getElementById('about').classList.add("hide");
+                    break;
+                case "About":
+                    document.getElementById('players').classList.add("hide");
+                    document.getElementById('playTime').classList.add("hide");
+                    document.getElementById('about').classList.remove("hide");
+                    break;
+
+            }
+        }, false);
+
+    </script>
+</head>
+
+<body>
+<header>
+    <div id="navigationWrapper" class="navigation_top">
+        <div id="navigation" class="navigation_top">
+            <p>Players</p>
+            <p>Time-Played</p>
+            <p>About</p>
+        </div>
+    </div>
+</header>
+
+<main>
+    <div id="players">
+        <h2>Online players</h2>
+        <div class="content">
+            <iframe id="charts_full" height="411" loading="lazy"
+                    seamless
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=1434626639&amp;format=interactive"
+                    width="665"></iframe>
+            <iframe id="charts_10m" height="411" loading="lazy"
+                    seamless
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=218824255&amp;format=interactive"
+                    width="665"></iframe>
+            <iframe id="charts_1h" height="411" loading="lazy"
+                    seamless
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=385476976&amp;format=interactive"
+                    width="665"></iframe>
+            <iframe id="charts_12h" height="411" loading="lazy"
+                    seamless
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=1954442446&amp;format=interactive"
+                    width="665"></iframe>
+            <iframe id="charts_24h" height="411" loading="lazy"
+                    seamless
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=835339491&amp;format=interactive"
+                    width="665"></iframe>
+            <iframe id="charts_onlineByTeam" height="411" loading="lazy"
+                    seamless
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=1292102179&amp;format=interactive"
+                    width="665"></iframe>
+        </div>
+    </div>
+    <div id="playTime" class="hide">
+        <p>Time played started to be calculated on the 2nd at 12 noon.</p>
+        <!-- <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=567249625&format=image"
+             seamless height="371" width="600" loading="lazy" alt="charts_timeplayedByPlayer" class="charts_timeplayedByPlayer"> -->
+        <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=1486509062&format=image"
+             seamless height="371" width="600" loading="lazy" alt="charts_timeplayedByTeam" class="charts_timeplayedByTeam">
+        <iframe id="timeplayed" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubhtml?gid=766322135&widget=true&headers=false&single=true&range=A1:L115"
+                loading="lazy" width="600" height="2500" style="background-color: #1e1e1e"></iframe>
+    </div>
+    <div id="about" class="hide">
+        <h2>Credits</h2>
+        <p>
+            Data retrieved and formatted in graph by dadodasyra#0001<br>
+            Information on the list of players and playing times calculated by Nicolas61x#2479<br>
+            Website created by Zelytra#3667 & dadodasyra#0001<br>
+            Team LBC on top<br>
+        </p>
+        <h2>How it works ?</h2>
+        <p>
+            Every second a program in C# pings the minecraft server. <br>
+            The server responds with a sample of 13 random players connected. <br>
+            Based on these 13 players, the program tries to understand what is the real list of connected players each second. <br>
+            The play time is based on the estimate from this, and is retrieved via a web api in json. <br>
+            The connected player count is calculated on a single ping every minute. <br>
+            All the data is then retrieved via a Google script which then puts it in a Google sheets. <br> <br>
+            If you take part in the event and wish for one of the documents to be updated more often, please contact me on discord : dadodasyra#0001 or via mail : dadodasyrapro@gmail.com
+        </p>
+    </div>
+
+    <script>
+        window.setInterval(function () {
+            reloadIFrame()
+        }, 60000);
+
+        async function reloadIFrame() {
+            console.log('Reloading..');
+            ["charts_full", "charts_10m", "charts_1h", "charts_12h", "charts_24h", "charts_onlineByTeam", "timeplayed"].forEach(chartname => {
+                let chart = document.getElementById(chartname);
+                if(chart) chart.src = "" + chart.src;
+            });
+            await new Promise(r => setTimeout(r, 2000));
+        }
+    </script>
+</main>
+</body>
+</html>

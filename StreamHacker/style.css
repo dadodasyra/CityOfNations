@@ -1,0 +1,55 @@
+@font-face {
+    font-family: "SanMarinoBeac";
+    src: url("media/SanMarinoBeac.woff") format("woff");
+}
+
+body {
+    background-color: #1e1e1e;
+}
+
+p {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    font-family: "SanMarinoBeac", serif;
+    font-size: 36px;
+    margin: 2px;
+    color: #ffffff;
+}
+
+img {
+    margin: auto;
+    display: block;
+}
+
+.player_ALLEMAND, .player_ITALIEN, .player_RICAIN, .player_ESPAGNOL {
+    height: 40%;
+}
+
+
+* .hide {
+    display: none;
+}
+.clickme {
+    width: 60%;
+    height: 40%;
+    font-size: 64px;
+    font-family: Poppins, serif;
+    background-color: #00b0f4;
+    border: 4px solid #007fb1;
+    color: #ffffff;
+    border-radius: 8px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.clickme:hover {
+    background-color: #0094d2; /* Green */
+    color: white;
+}
+

@@ -1,0 +1,131 @@
+header {
+    background-image: url('img/wave_3.svg'), url('img/wave_2.svg'), url('img/wave_1.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    background-color: #1e1e1e;
+}
+
+header .navigation_top {
+    display: flex;
+    padding-top: 5px;
+    align-items: center;
+    justify-content: space-around;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+    transition-duration: 500ms;
+
+}
+
+header .navigation_top p {
+    font-family: Poppins, serif;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 5px;
+    transition-duration: 500ms;
+}
+
+header .navigation_top p:hover {
+    color: #1a1a1a;
+    transition-duration: 250ms;
+}
+
+header .navigation_top img {
+    width: 60px;
+    height: 60px;
+    transition-duration: 500ms;
+}
+
+main {
+    background-color: #1e1e1e;
+}
+
+#players .content{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    margin: auto;
+}
+
+#players h2 {
+    display: flex;
+    justify-content: center;
+    color: #FFFFFF;
+}
+
+#players iframe {
+    margin: 15px auto;
+    align-content: center;
+    border: none;
+}
+
+main #players.hide {
+    display: none;
+}
+
+main #playTime.hide {
+    display: none;
+}
+
+main #about.hide {
+    display: none;
+}
+
+#about h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 35px;
+    color: #FFFFFF;
+}
+
+
+main #about {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main #about p {
+    width: 75%;
+    font-family: Poppins, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 25px;
+    text-align: justify;
+    margin: 15px auto;
+    color: #FFFFFF;
+}
+
+#playTime p {
+    align-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #FFFFFF;
+}
+#playTime iframe {
+    width: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 25px auto 25px 50px;
+}
+
+#playTime .charts_timeplayedByTeam, .charts_timeplayedByPlayer {
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+}
+
+.embedded-doc {
+    background-color: #1e1e1e;
+    color: #752AC8;
+}
