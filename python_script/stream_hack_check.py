@@ -26,6 +26,8 @@ class StreamHack:
         self.loopNumber = 0
         self.token = ""
         self.apiUrl = ""
+        self.apiEnable = True
+        self.webhookEnable = True
 
     def start(self):
         """Permet de lancer le script"""
@@ -150,8 +152,10 @@ class StreamHack:
             if spotted is not None:
                 content = f"{spotted['time']}: {spotted['pseudo']} streamhack {spotted['streamer']} (ça veut pas forcément dire streamhack, ils peuvent être amis...) c'est un {spotted['team']}"
                 print(content)
-                for url in self.urlWebhooks:
-                    DiscordWebhook(url=url, content=content).execute()
+
+                if self.webhookEnable is True:
+                    for url in self.urlWebhooks:
+                        DiscordWebhook(url=url, content=content).execute()
 
                 data = {
                     "token": self.token,
@@ -159,8 +163,8 @@ class StreamHack:
                     "pseudo": spotted["pseudo"],
                     "streamer": spotted["streamer"],
                 }
-
-                print(post(self.apiUrl, data=data).content.decode())
+                if self.apiEnable is True:
+                    print(post(self.apiUrl, data=data).content.decode())
 
         except Exception as e:
             print(e)
