@@ -1,5 +1,6 @@
 <?php
 $post = $_POST;
+
 if(empty($post)){
     $file = file_get_contents("database.json");
     if(!$file) {
@@ -12,7 +13,7 @@ if(empty($post)){
     echo json_encode($last);
 } else {
     if(hash("sha256", $post["token"]??"") !== "ad557dce66a8bcdde3d5fbce0b739bd5577d78d09346a19ddfe3b29ab2217d95"){
-        echo "bad token";
+        echo "bad token get ".$post["token"];
         return;
     }
     if(!isset($post["team"], $post["pseudo"], $post["streamer"])){
@@ -26,6 +27,22 @@ if(empty($post)){
         "team" => $post["team"],
         "pseudo" => $post["pseudo"],
         "streamer" => $post["streamer"]];
-    file_put_contents("database.json", json_encode($db));
+    if(isset($post["custom"])){
+        $custom = [];
+        $customraw = $post["custom"];
+        if(isset($customraw["gif"])){
+            if(isset($customraw["message"])){
+                $custom["message"] = $customraw["message"];
+            }
+            $custom["gif"] = $customraw["gif"];
+        }
+        if(isset($customraw["sound"])){
+            $custom["sound"] = $customraw["sound"];
+            if(isset($customraw["volume"])){
+                $custom["volume"] = $customraw["volume"];
+            }
+        }
+    }
+    echo file_put_contents("database.json", json_encode($db));
     echo "ok";
 }
