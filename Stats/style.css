@@ -129,3 +129,22 @@ main #about p {
     background-color: #1e1e1e;
     color: #752AC8;
 }
+.timePlayed {
+    width: 100%;
+    border-collapse: collapse;
+}
+.timePlayed thead {
+    background: rgba(75,158,254,.6);
+    color: white;
+    border: solid white;
+    border-width: 1px 0 1px 0;
+
+}
+.timePlayed tbody {
+    background-color:black;
+    text-align:center;
+    color:white;
+}
+.timePlayed img {
+    width:32px;
+}

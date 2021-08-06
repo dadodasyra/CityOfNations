@@ -63,8 +63,3 @@ function formatdate(timeplayed)
 
   return (hour??"0") + ":" + (minute??"00") + ":" + (second??"00")
 }
-
-function sleep(sleepDuration){
-    var now = new Date().getTime();
-    while(new Date().getTime() < now + sleepDuration){ /* Do nothing */ }
-}
