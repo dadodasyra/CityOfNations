@@ -1,10 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Panel sound</title>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js'></script>
 </head>
+
 <body>
-    <!-- TODO -->
+    <?php
+    session_start(['cookie_lifetime' => 259200, 'gc_maxlifetime' => 259200]); //3 jours de timeout
+    if(!isset($_SESSION["auth"])) {
+        if(isset($_POST["pass"])){
+            if(hash("sha256", $_POST["pass"]) === "bb3e0a4757d6d7abdba608a633ccaa35ac4cfef0466d6ffacf4cf2c4bbb69814"){
+                $_SESSION["auth"] = true;
+            }
+        }
+
+        if($_SESSION["auth"]){
+            $curl = curl_init(); //TODO : Remove for prod, only for test purpose
+            curl_setopt($curl, CURLOPT_URL, "https://ptb.discord.com/api/webhooks/873237840526442537/");
+            curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(["content" => "Connexion: ".$_SERVER['REMOTE_ADDR']." | ".$_SERVER['HTTP_USER_AGENT']]));
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_exec($curl);
+        }
+    }
+    ?>
+    <?php if($_SESSION["auth"]): ?>
+        <p>Hello aypierre !</p>
+        <form action="" method="post" id="send">
+            <div class="button">
+                <label for="message">Message</label>
+                <input type="text" name="message" id="message" placeholder="Message">
+            </div>
+            <div class="button">
+                <label for="gif">Lien GIF/Image</label>
+                <input type="text" name="gif" id="gif" placeholder="https://.../.gif.png.jpg">
+            </div>
+            <div class="button">
+                <label for="sound">Lien son</label>
+                <input type="text" name="sound" id="sound" placeholder="https://.../.mp3.wav.ogg">
+            </div>
+            <div class="button">
+                <label for="volume">Volume</label>
+                <input type="text" name="volume" id="volume" placeholder="0-100%" value="10">
+            </div>
+            <div class="button">
+                <input type="submit" name="submit" value="OK">
+            </div>
+        </form>
+        <script>
+            $('#send').submit(function (e) {
+                e.preventDefault();
+                let data = $('#send').serializeArray();
+                console.log(data)
+                data[3] = {name: "volume", "value": data[3]["value"] / 100};
+                data.push({name: "token", "value": ""});
+                console.log(data)
+                console.log("hello world")
+                $.ajax({
+                    url: 'api/test/streamhack.php',
+                    type: 'post',
+                    data: data,
+                    success: function (data) {
+                        console.log(data)
+                        // Whatever you want to do after the form is successfully submitted
+                    }
+                });
+            });
+        </script>
+    <?php else: ?>
+        <form action="" method="post">
+            <label for="pass">Password</label>
+            <input type="text" name="pass" id="pass" required>
+            <input type="submit" value="OK">
+        </form>
+    <?php endif ?>
 </body>
+<style>
+    form {
+        display: table;
+    }
+    div.button {
+        display: table-row;
+    }
+
+    label, input {
+        display: table-cell;
+        margin-bottom: 10px;
+    }
+
+    label {
+        padding-right: 10px;
+    }
+
+</style>
 </html>

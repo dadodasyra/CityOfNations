@@ -70,7 +70,7 @@
                     }
 
                     if(reparr["custom"]["sound"]){
-                        playAudio(reparr["custom"]["sound"]).volume(reparr["custom"]["volume"]??0.1).play();
+                        playAudio(reparr["custom"]["sound"]).volume(reparr["custom"]["volume"]).play();
                     }
                 } else {
                     let oldtag = document.getElementsByClassName("text_"+reparr["team"]);
@@ -97,10 +97,10 @@
     }
     function request()
     {
-        let toadd = "";
+        let toadd;
         toadd = "?name="+streamername;
         let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", "https://dadodasyra.fr/city/api/streamhack.php"+toadd, false);
+        xmlHttp.open("GET", "https://dadodasyra.fr/city/api/test/streamhack.php"+toadd, false);
         xmlHttp.send(null);
         return xmlHttp.responseText;
     }

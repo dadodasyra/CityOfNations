@@ -1,5 +1,6 @@
+<?php
+    header('Content-Type: application/json');
 
-    <?php
     include_once 'pingserversecret.php';
     try
     {

@@ -64,15 +64,7 @@ main {
     border: none;
 }
 
-main #players.hide {
-    display: none;
-}
-
-main #playTime.hide {
-    display: none;
-}
-
-main #about.hide {
+.hide {
     display: none;
 }
 
