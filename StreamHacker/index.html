@@ -38,8 +38,7 @@
     window.setInterval(function(){checkUpdate();}, 5000);
     async function checkUpdate() {
         try {
-            let rep = await request();
-            let reparr = JSON.parse(rep.toString());
+            let reparr = await fetch(`https://dadodasyra.fr/city/api/streamhack.php?name=${streamername}`).then(response => response.json());
             if (!reparr) return;
             if (!lastid) {
                 lastid = reparr.id;
@@ -94,17 +93,6 @@
         } catch (e) {
             console.log(e);
         }
-    }
-    function request() {
-        return new Promise(function (resolve) {
-            let xhr = new XMLHttpRequest();
-            let toadd = "?name="+streamername;
-            xhr.open("GET", "https://dadodasyra.fr/city/api/streamhack.php"+toadd);
-            xhr.onload = function () {
-                if (this.status >= 200 && this.status < 300) resolve(xhr.response);
-            };
-            xhr.send();
-        });
     }
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
