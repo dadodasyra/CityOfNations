@@ -64,7 +64,7 @@ main {
 }
 
 .hide {
-    display: none;
+    display: none!important;
 }
 
 #about h2 {
