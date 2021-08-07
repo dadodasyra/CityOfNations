@@ -40,17 +40,16 @@ if(empty($post)){
         $custom = [];
         $customraw = $post["custom"];
 
-        if(isset($customraw["message"])){
-            $custom["message"] = $customraw["message"];
-        }
-        $custom["gif"] = $customraw["gif"]??"https://upload.wikimedia.org/wikipedia/commons/8/89/HD_transparent_picture.png";
+        if(isset($customraw["message"]) && $customraw["message"] !== "") $custom["message"] = $customraw["message"];
 
-        if(isset($customraw["sound"])){
+        $custom["gif"] = $customraw["gif"] !== "" ? $customraw["gif"] : "media/void.png";
+
+        if(isset($customraw["sound"]) && $customraw["sound"] !== ""){
             $custom["sound"] = $customraw["sound"];
             $custom["volume"] = $customraw["volume"]??0.1;
         }
-        $custom["stramer"] = $customraw["streamer"]??"all";
-        $db[count($db)]["custom"] = $custom;
+        $db[count($db)]["streamer"] = $customraw["streamer"]??"all";
+        $db[count($db) - 1]["custom"] = $custom;
     } else {
         $db[count($db)] = [
             "team" => $post["team"],

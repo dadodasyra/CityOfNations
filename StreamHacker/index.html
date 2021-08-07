@@ -38,15 +38,15 @@
     window.setInterval(function(){checkUpdate();}, 5000);
     async function checkUpdate() {
         try {
-            let rep = request();
-            let reparr = JSON.parse(rep);
+            let rep = await request();
+            let reparr = JSON.parse(rep.toString());
             if (!reparr) return;
             if (!lastid) {
                 lastid = reparr.id;
             } else if (lastid !== reparr.id) {
                 lastid = reparr.id;
                 let streamer = reparr["streamer"];
-                if(onlyme && streamer !== "allforce" && streamer !== streamername.toLowerCase()) return;
+                if(onlyme && streamer !== "ALLFORCE" && streamer !== streamername.toLowerCase()) return;
                 if(streamer.includes("ONLYHE") && streamername !== streamer.replace("ONLYHE", "")) return;
 
                 if(reparr["custom"]){
@@ -70,7 +70,7 @@
                     }
 
                     if(reparr["custom"]["sound"]){
-                        playAudio(reparr["custom"]["sound"]).volume(reparr["custom"]["volume"]??0.1).play();
+                        playAudio(reparr["custom"]["sound"]).volume(reparr["custom"]["volume"]).play();
                     }
                 } else {
                     let oldtag = document.getElementsByClassName("text_"+reparr["team"]);
@@ -95,14 +95,16 @@
             console.log(e);
         }
     }
-    function request()
-    {
-        let toadd = "";
-        toadd = "?name="+streamername;
-        let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", "https://dadodasyra.fr/city/api/streamhack.php"+toadd, false);
-        xmlHttp.send(null);
-        return xmlHttp.responseText;
+    function request() {
+        return new Promise(function (resolve) {
+            let xhr = new XMLHttpRequest();
+            let toadd = "?name="+streamername;
+            xhr.open("GET", "https://dadodasyra.fr/city/api/streamhack.php"+toadd);
+            xhr.onload = function () {
+                if (this.status >= 200 && this.status < 300) resolve(xhr.response);
+            };
+            xhr.send();
+        });
     }
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));
