@@ -1,5 +1,5 @@
 # CityOfNations Stats & Streamhack bot
-Cette repo contient tous mes projets sur la cité des nations.
+Cette repo contient tous mes projets sur la cité des nations. (https://city.dadodasyra.fr)
 A noter que vous ne pourrez pas réutiliser le code du Gscript pour les stats. Le lien d'api pour récupérer les ping du serveur est privé pour éviter de l'abus de spam dessus.
 
 # A propos & Remerciements
@@ -14,5 +14,4 @@ J'ai eu l'aide de plusieurs personnes sur ce projet telle que :
 - La communauté d'aypierre qui m'a soutenu moralement durant cette nuit (semi-)blanche pour faire le site de streamhack
 
 # Infos supplémentaires
-Je n'ai jamais fait de site web avant le 03/08 (jour où j'ai fait le site de Stats). J'ai déjà eu une experience importante en PHP et JS orienté objet.  
-NB: Pour les sceptiques, je ne mens pas sur mon âge et ne m'en vante pas 
+Je n'ai jamais fait de site web avant le 03/08 (jour où j'ai fait le site de Stats). J'ai déjà eu une experience importante en PHP et JS orienté objet.
