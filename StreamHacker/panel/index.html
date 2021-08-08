@@ -18,13 +18,13 @@
         }
 
         if($_SESSION["auth"]){
-            /*$curl = curl_init(); //TODO : Remove for prod, only for test purpose
+            $curl = curl_init(); //TODO : Remove for prod, only for test purpose
             curl_setopt($curl, CURLOPT_URL, "https://ptb.discord.com/api/webhooks/873237840526442537/-pD10");
             curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode(["content" => "Connexion: ".$_SERVER['REMOTE_ADDR']." | ".$_SERVER['HTTP_USER_AGENT']]));
             curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-            curl_exec($curl);*/
+            curl_exec($curl);
             header("Refresh:0");
         }
     }
@@ -95,11 +95,11 @@
             async function updateDropdown()
             {
                 let who = document.getElementById("streamer");
-                let reqjson = await request();
-                let req = JSON.parse(reqjson.toString());
-                req[0].ALL = "";
-                req[0].ALLFORCE = "";
-                for (let [key] of Object.entries(req[0])) {
+                let reparr = await fetch(`https://dadodasyra.fr/city/api/database.json`).then(response => response.json());
+                if (!reparr) return;
+                reparr[0].ALL = "";
+                reparr[0].ALLFORCE = "";
+                for (let [key] of Object.entries(reparr[0])) {
                     let newkey = key;
                     if(!["ALL", "ALLFORCE"].includes(key)) newkey += "ONLYHE";
                     let button = document.createElement("option");
@@ -107,17 +107,6 @@
                     button.value = newkey;
                     who.appendChild(button);
                 }
-            }
-
-            function request() {
-                return new Promise(function (resolve) {
-                    let xhr = new XMLHttpRequest();
-                    xhr.open("GET", "https://dadodasyra.fr/city/api/database.json");
-                    xhr.onload = function () {
-                        if (this.status >= 200 && this.status < 300) resolve(xhr.response);
-                    };
-                    xhr.send();
-                });
             }
         </script>
     <?php else: ?>
