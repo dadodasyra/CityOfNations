@@ -38,15 +38,15 @@
     window.setInterval(function(){checkUpdate();}, 5000);
     async function checkUpdate() {
         try {
-            let rep = request();
-            let reparr = JSON.parse(rep);
+            let reparr = await fetch(`https://dadodasyra.fr/city/api/streamhack.php?name=${streamername}`).then(response => response.json());
             if (!reparr) return;
+
             if (!lastid) {
                 lastid = reparr.id;
             } else if (lastid !== reparr.id) {
                 lastid = reparr.id;
                 let streamer = reparr["streamer"];
-                if(onlyme && streamer !== "allforce" && streamer !== streamername.toLowerCase()) return;
+                if(onlyme && streamer !== "ALLFORCE" && streamer !== streamername.toLowerCase()) return;
                 if(streamer.includes("ONLYHE") && streamername !== streamer.replace("ONLYHE", "")) return;
 
                 if(reparr["custom"]){
@@ -94,15 +94,6 @@
         } catch (e) {
             console.log(e);
         }
-    }
-    function request()
-    {
-        let toadd;
-        toadd = "?name="+streamername;
-        let xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", "https://dadodasyra.fr/city/api/test/streamhack.php"+toadd, false);
-        xmlHttp.send(null);
-        return xmlHttp.responseText;
     }
     function sleep(ms) {
         return new Promise(resolve => setTimeout(resolve, ms));

@@ -38,7 +38,7 @@ header .navigation_top img {
     transition-duration: 500ms;
 }
 
-main {
+html, main {
     background-color: #1e1e1e;
 }
 
@@ -57,7 +57,7 @@ main {
     color: #FFFFFF;
 }
 
-#players iframe {
+iframe, .emeraldsbyteam{
     margin: 15px auto;
     align-content: center;
     border: none;
@@ -67,7 +67,9 @@ main {
     display: none!important;
 }
 
-#about h2 {
+#about, #end h2 {
+    margin: 10px;
+    padding-top: 20px;
     display: flex;
     justify-content: center;
     font-size: 35px;
@@ -75,7 +77,7 @@ main {
 }
 
 
-main #about {
+#about, #end {
     width: 100%;
     height: auto;
     display: flex;
@@ -83,15 +85,15 @@ main #about {
     justify-content: center;
 }
 
-main #about p {
+#about, #end p.entrance {
     width: 75%;
     font-family: Poppins, serif;
     font-style: normal;
     font-weight: normal;
     font-size: 25px;
     text-align: justify;
-    margin: 15px auto;
     color: #FFFFFF;
+    margin: auto auto 50px;
 }
 
 #playTime p {
@@ -138,4 +140,56 @@ main #about p {
 }
 .timePlayed img {
     width:32px;
+}
+
+main .finalstats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+main .block {
+    margin: 30px;
+    width: 430px;
+    height: 300px;
+    background-color: #4C4C4C;
+    border-radius: 25px;
+    justify-content: center;
+    padding: 5px;
+}
+main .block h3 {
+    margin: 30px;
+    font-family: Poppins, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 80px;
+    color: #FCC22B;
+    text-align: center;
+    height: 50%;
+}
+main .block h4 {
+    margin: 30px;
+    font-family: Poppins, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    color: #FCC22B;
+    text-align: center;
+    height: 50%;
+}
+
+main .block p {
+    margin-top: 15px;
+    font-family: Poppins, serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 22px;
+    text-align: center;
+    color: #ffffff;
+    line-height: 30px;
+}
+img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 }

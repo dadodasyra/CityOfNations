@@ -23,16 +23,25 @@
                     document.getElementById('players').classList.remove("hide");
                     document.getElementById('playTime').classList.add("hide");
                     document.getElementById('about').classList.add("hide");
+                    document.getElementById('end').classList.add("hide");
                     break;
                 case "Time-Played":
                     document.getElementById('players').classList.add("hide");
                     document.getElementById('playTime').classList.remove("hide");
                     document.getElementById('about').classList.add("hide");
+                    document.getElementById('end').classList.add("hide");
+                    break;
+                case "End":
+                    document.getElementById('players').classList.add("hide");
+                    document.getElementById('playTime').classList.add("hide");
+                    document.getElementById('about').classList.add("hide");
+                    document.getElementById('end').classList.remove("hide");
                     break;
                 case "About":
                     document.getElementById('players').classList.add("hide");
                     document.getElementById('playTime').classList.add("hide");
                     document.getElementById('about').classList.remove("hide");
+                    document.getElementById('end').classList.add("hide");
                     break;
             }
         }, false);
@@ -46,6 +55,7 @@
         <div id="navigation" class="navigation_top">
             <p>Players</p>
             <p>Time-Played</p>
+            <p>End</p>
             <p>About</p>
         </div>
     </div>
@@ -82,7 +92,9 @@
         </div>
     </div>
     <div id="playTime" class="hide">
-        <p>Time played started to be calculated on the 2nd at 12 noon.</p>
+        <p>Time played started to be calculated on the 2nd at 12 noon.<br>
+            Stopped on the 8th at 10pm.
+        </p>
         <!-- <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=567249625&format=image"
              seamless height="371" width="600" loading="lazy" alt="charts_timeplayedByPlayer" class="charts_timeplayedByPlayer"> -->
         <img src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=1486509062&format=image"
@@ -92,12 +104,11 @@
             <table class="timePlayed">
                 <thead>
                 <th>#</th>
-                <th></th>
+                <th> </th>
                 <th>Team</th>
                 <th>Name</th>
                 <th>Time played</th>
-                <th>Lastseen</th>
-                <th>Connected since</th>
+                <th>Connected</th>
                 </thead>
                 <tbody id="timePlayed">
 
@@ -105,49 +116,125 @@
             </table>
         </div>
         <script async type="text/javascript">
-            var teams = { "aypierre": "FRANCE", "Bichard": "FRANCE", "Frigiel": "FRANCE", "Fukano": "FRANCE", "FuzeIII": "FRANCE", "Guep": "FRANCE", "JimmyB0yyy": "FRANCE", "Lapin": "FRANCE", "luccio": "FRANCE", "Magicknup": "FRANCE", "MathoX": "FRANCE", "nemenems": "FRANCE", "Niimbus_": "FRANCE", "ninjaxxu": "FRANCE", "Nino_mssclick": "FRANCE", "RedToxx_": "FRANCE", "Soulravenn": "FRANCE", "Thatdanmgirll": "FRANCE", "TheGuill84": "FRANCE", "Tityy": "FRANCE", "xLuccio": "FRANCE", "Carpyy": "ITALIA", "Dere_X": "ITALIA", "Dissociatore": "ITALIA", "Djovanni": "ITALIA", "Francy1998": "ITALIA", "GiankoExtreme": "ITALIA", "Giiacomo": "ITALIA", "GuerraReturns": "ITALIA", "Iskandert": "ITALIA", "Mark3s": "ITALIA", "MICHA3L_tv": "ITALIA", "MrDominator": "ITALIA", "Napo7700": "ITALIA", "NoLifeGabbo": "ITALIA", "nonsonolink": "ITALIA", "NovaXCIV": "ITALIA", "Tech4Play": "ITALIA", "Triton707": "ITALIA", "UltimateITA": "ITALIA", "xAlphaReturns": "ITALIA","Aurigas": "ESPAÑA", "aXoZer": "ESPAÑA", "BarcaGamer": "ESPAÑA", "Bobicraft": "ESPAÑA", "cibergun": "ESPAÑA", "Conterstine": "ESPAÑA", "Crisgreen": "ESPAÑA", "EsVandal": "ESPAÑA", "GERAMC": "ESPAÑA", "Giaantv": "ESPAÑA", "hasvik": "ESPAÑA", "IcraK": "ESPAÑA", "Lakshart": "ESPAÑA", "iLuh": "ESPAÑA", "Mayichi": "ESPAÑA", "MrDs4ster": "ESPAÑA", "Serpias": "ESPAÑA", "Shadoune666": "ESPAÑA", "Suw1e": "ESPAÑA", "xPandih": "ESPAÑA", "Atwy": "ESPAÑA", "giaantv": "ESPAÑA", "raulderp7": "ESPAÑA", "QD_iBlqzy": "ESPAÑA", "IsManuPlay": "ESPAÑA", "Arfore": "DEUTSCHLAND", "ATellyBridger": "DEUTSCHLAND", "AustrianGaming": "DEUTSCHLAND", "Blizzor96": "DEUTSCHLAND", "Caravas": "DEUTSCHLAND", "castcrafter": "DEUTSCHLAND", "gamingguidesde": "DEUTSCHLAND", "nooreax": "DEUTSCHLAND", "NxtFake": "DEUTSCHLAND", "predii": "DEUTSCHLAND", "RealBenex": "DEUTSCHLAND", "Stxgi": "DEUTSCHLAND", "TheFabo": "DEUTSCHLAND", "Tjan": "DEUTSCHLAND", "verweisunq": "DEUTSCHLAND", "Wichtiger": "DEUTSCHLAND", "X_SUS": "DEUTSCHLAND", "xLymex": "DEUTSCHLAND", "ZombieZockt": "DEUTSCHLAND", "zPrxme": "DEUTSCHLAND", "Trustcn": "DEUTSCHLAND", "xpieps_": "DEUTSCHLAND", "Knickii": "DEUTSCHLAND", "a6d": "UNITED STATES", "Antfrost": "UNITED STATES", "bekyamon": "UNITED STATES", "Brumin_": "UNITED STATES", "Elstyos": "UNITED STATES", "GEVids": "UNITED STATES", "GOLRIVER": "UNITED STATES", "Graecie_": "UNITED STATES", "RageTrain": "UNITED STATES", "Reddoons": "UNITED STATES", "RedVelvetCake": "UNITED STATES", "SammyGreen": "UNITED STATES", "sdslqyer": "UNITED STATES", "Seapeekay": "UNITED STATES", "spideyarmy": "UNITED STATES", "spifeyy": "UNITED STATES", "theorionsound": "UNITED STATES", "Tryhard": "UNITED STATES", "TurboPiggyYT": "UNITED STATES", "vGumiho": "UNITED STATES", "Vraxooo": "UNITED STATES", "ZachPlaysAN": "UNITED STATES", "Fasterr": "UNITED STATES", "Narkotiqu": "UNITED STATES", "SpaceX": "UNITED STATES", "Super_Genius_007": "UNITED STATES", "xAyman": "UNITED STATES", "aleuwurawrxd": "UNITED STATES", "Mogii": "UNITED STATES", "Omarmu": "UNITED STATES", "Xxelah": "UNITED STATES", "Dimonateur": "UNITED STATES", "atawalpas": "UNITED STATES", "_Prototype": "STAFF", "_Zary_": "STAFF", "adrichefclan": "STAFF", "Alex_15889": "STAFF", "Arc_Nolan": "STAFF", "Arthenala": "STAFF", "bigbublle1963": "STAFF", "bZx_": "STAFF", "Cryzopha": "STAFF", "DevilMythe": "STAFF", "DrSallan": "STAFF", "elterapi": "STAFF", "Eowalim": "STAFF", "Falc0rN": "STAFF", "Gabiscuit": "STAFF", "GreyShelby": "STAFF", "HiitSayZ": "STAFF", "Popi_Craft": "STAFF", "Ma0Ling": "STAFF", "InfiniteRobot": "STAFF", "InoRyth": "STAFF", "Louqua": "STAFF", "MlleDujardin": "STAFF", "mokuura": "STAFF", "NaokoRae": "STAFF", "NoixRiver": "STAFF", "RougeCiel": "STAFF", "Roxfor": "STAFF", "SaveThatGam": "STAFF", "Siphano": "STAFF", "SolHeaven": "STAFF", "The_Killeur_999": "STAFF", "the_nt": "STAFF", "Tyyphoonn": "STAFF", "uncheated": "STAFF", "vinceok": "STAFF", "Waahx_": "STAFF", "Xantheas": "STAFF", "Popi_Craft": "STAFF", "Maroczy": "STAFF"};  var scorebyteam = {"FRANCE": 0, "DEUTSCHLAND": 0, "ESPAÑA": 0, "ITALIA": 0, "STAFF": 0, "UNITED STATES": 0};
+            let teams = { "Nannoxx": "FRANCE", "aypierre": "FRANCE", "Bichard": "FRANCE", "Frigiel": "FRANCE", "Fukano": "FRANCE", "FuzeIII": "FRANCE", "Guep": "FRANCE", "JimmyB0yyy": "FRANCE", "Lapin": "FRANCE", "luccio": "FRANCE", "Magicknup": "FRANCE", "MathoX": "FRANCE", "nemenems": "FRANCE", "Niimbus_": "FRANCE", "ninjaxxu": "FRANCE", "Nino_mssclick": "FRANCE", "RedToxx_": "FRANCE", "Soulravenn": "FRANCE", "Thatdanmgirll": "FRANCE", "TheGuill84": "FRANCE", "Tityy": "FRANCE", "xLuccio": "FRANCE", "Carpyy": "ITALIA", "Dere_X": "ITALIA", "Dissociatore": "ITALIA", "Djovanni": "ITALIA", "Francy1998": "ITALIA", "GiankoExtreme": "ITALIA", "Giiacomo": "ITALIA", "GuerraReturns": "ITALIA", "Iskandert": "ITALIA", "Mark3s": "ITALIA", "MICHA3L_tv": "ITALIA", "MrDominator": "ITALIA", "Napo7700": "ITALIA", "NoLifeGabbo": "ITALIA", "nonsonolink": "ITALIA", "NovaXCIV": "ITALIA", "Tech4Play": "ITALIA", "Triton707": "ITALIA", "UltimateITA": "ITALIA", "xAlphaReturns": "ITALIA","Aurigas": "ESPAÑA", "aXoZer": "ESPAÑA", "BarcaGamer": "ESPAÑA", "Bobicraft": "ESPAÑA", "cibergun": "ESPAÑA", "Conterstine": "ESPAÑA", "Crisgreen": "ESPAÑA", "EsVandal": "ESPAÑA", "GERAMC": "ESPAÑA", "Giaantv": "ESPAÑA", "hasvik": "ESPAÑA", "IcraK": "ESPAÑA", "Lakshart": "ESPAÑA", "iLuh": "ESPAÑA", "Mayichi": "ESPAÑA", "MrDs4ster": "ESPAÑA", "Serpias": "ESPAÑA", "Shadoune666": "ESPAÑA", "Suw1e": "ESPAÑA", "xPandih": "ESPAÑA", "Atwy": "ESPAÑA", "giaantv": "ESPAÑA", "raulderp7": "ESPAÑA", "QD_iBlqzy": "ESPAÑA", "IsManuPlay": "ESPAÑA", "Arfore": "DEUTSCHLAND", "ATellyBridger": "DEUTSCHLAND", "AustrianGaming": "DEUTSCHLAND", "Blizzor96": "DEUTSCHLAND", "Caravas": "DEUTSCHLAND", "castcrafter": "DEUTSCHLAND", "gamingguidesde": "DEUTSCHLAND", "nooreax": "DEUTSCHLAND", "NxtFake": "DEUTSCHLAND", "predii": "DEUTSCHLAND", "RealBenex": "DEUTSCHLAND", "Stxgi": "DEUTSCHLAND", "TheFabo": "DEUTSCHLAND", "Tjan": "DEUTSCHLAND", "verweisunq": "DEUTSCHLAND", "Wichtiger": "DEUTSCHLAND", "X_SUS": "DEUTSCHLAND", "xLymex": "DEUTSCHLAND", "ZombieZockt": "DEUTSCHLAND", "zPrxme": "DEUTSCHLAND", "Trustcn": "DEUTSCHLAND", "Ein_Glas_Cola": "DEUTSCHLAND", "xpieps_": "DEUTSCHLAND", "Knickii": "DEUTSCHLAND", "a6d": "UNITED STATES", "Antfrost": "UNITED STATES", "bekyamon": "UNITED STATES", "Brumin_": "UNITED STATES", "Elstyos": "UNITED STATES", "GEVids": "UNITED STATES", "GOLRIVER": "UNITED STATES", "Graecie_": "UNITED STATES", "RageTrain": "UNITED STATES", "Reddoons": "UNITED STATES", "RedVelvetCake": "UNITED STATES", "SammyGreen": "UNITED STATES", "sdslqyer": "UNITED STATES", "Seapeekay": "UNITED STATES", "spideyarmy": "UNITED STATES", "spifeyy": "UNITED STATES", "theorionsound": "UNITED STATES", "Tryhard": "UNITED STATES", "TurboPiggyYT": "UNITED STATES", "vGumiho": "UNITED STATES", "Vraxooo": "UNITED STATES", "ZachPlaysAN": "UNITED STATES", "Fasterr": "UNITED STATES", "Narkotiqu": "UNITED STATES", "SpaceX": "UNITED STATES", "Super_Genius_007": "UNITED STATES", "xAyman": "UNITED STATES", "aleuwurawrxd": "UNITED STATES", "Mogii": "UNITED STATES", "Omarmu": "UNITED STATES", "Xxelah": "UNITED STATES", "Dimonateur": "UNITED STATES", "atawalpas": "UNITED STATES", "_Prototype": "STAFF", "_Zary_": "STAFF", "adrichefclan": "STAFF", "Alex_15889": "STAFF", "Arc_Nolan": "STAFF", "Arthenala": "STAFF", "bigbublle1963": "STAFF", "bZx_": "STAFF", "Cryzopha": "STAFF", "DevilMythe": "STAFF", "DrSallan": "STAFF", "elterapi": "STAFF", "Eowalim": "STAFF", "Falc0rN": "STAFF", "Gabiscuit": "STAFF", "GreyShelby": "STAFF", "HiitSayZ": "STAFF", "Popi_Craft": "STAFF", "Ma0Ling": "STAFF", "InfiniteRobot": "STAFF", "InoRyth": "STAFF", "Louqua": "STAFF", "MlleDujardin": "STAFF", "mokuura": "STAFF", "NaokoRae": "STAFF", "NoixRiver": "STAFF", "RougeCiel": "STAFF", "Roxfor": "STAFF", "SaveThatGam": "STAFF", "Siphano": "STAFF", "SolHeaven": "STAFF", "The_Killeur_999": "STAFF", "the_nt": "STAFF", "Tyyphoonn": "STAFF", "uncheated": "STAFF", "vinceok": "STAFF", "Waahx_": "STAFF", "Xantheas": "STAFF", "Popi_Craft": "STAFF", "Maroczy": "STAFF"};
+            let scorebyteam = {"FRANCE": 0, "DEUTSCHLAND": 0, "ESPAÑA": 0, "ITALIA": 0, "STAFF": 0, "UNITED STATES": 0};
 
-            var flags = {'FRANCE':'https://discord.com/assets/c1a36c711f0ae0ab46c7dce06f63a723.svg','ITALIA':'https://discord.com/assets/4d4f20f2f1c88447480002bbf675404a.svg', 'ESPAÑA':'https://discord.com/assets/a8224968196d0dd6d84e44c98093c280.svg','UNITED STATES':'https://discord.com/assets/d788b9231ed2028dc29245f76cf0a415.svg', 'DEUTSCHLAND':'https://discord.com/assets/939afd91bea7074f84f4a328ca095295.svg', 'STAFF':'https://cdn.discordapp.com/emojis/700064165464899594.gif'}
-            var data = {}
-            fetch('api/timeplayed.php').then(async e => {
-                data = await e.json();
-                displayTab()
-            })
-
-            function displayTab() {
+            let flags = {'FRANCE':'https://discord.com/assets/c1a36c711f0ae0ab46c7dce06f63a723.svg','ITALIA':'https://discord.com/assets/4d4f20f2f1c88447480002bbf675404a.svg', 'ESPAÑA':'https://discord.com/assets/a8224968196d0dd6d84e44c98093c280.svg','UNITED STATES':'https://discord.com/assets/d788b9231ed2028dc29245f76cf0a415.svg', 'DEUTSCHLAND':'https://discord.com/assets/939afd91bea7074f84f4a328ca095295.svg', 'STAFF':'https://cdn.discordapp.com/emojis/700064165464899594.gif'}
+            displayTab();
+            async function displayTab() {
+                let e = await fetch('api/timeplayed.php');
+                let data = await e.json();
                 let players = data.players
                 players.sort((a, b) => {
                     return b.timePlayed - a.timePlayed
                 })
                 let tbody = document.getElementById('timePlayed')
                 let html = "";
-                let o = new Intl.DateTimeFormat("fr" , {day: "2-digit", hour:"2-digit", minute:"2-digit", second:"2-digit"});
 
+                const unixTime = Math.floor(Date.now() / 1000) + 2 * 3600;
                 for (let i = 0; i < players.length; i++) {
                     let p = players[i]
                     html += `<tr>
-        <td>${i+1}</td>
-        <td><img loading="lazy" src="https://minotar.net/avatar/${p.name}/32.png"/></td>
-        <td><img loading="lazy" src="${flags[teams[p.name]]}"/></td>
-        <td>${p.name}</td>
-        <td>${formatdate(p.timePlayed)}</td>
-        <td>${p.connected ? 'Connected' : o.format(new Date(p.lastSeen*1000))}</td>
-        <td>${o.format(new Date(p.connectedSince*1000))}</td>
-      </tr>`
+                            <td>${i + 1}</td>
+                            <td><img loading="lazy" src="https://minotar.net/avatar/${p.name}/8.png"/></td>
+                            <td><img loading="lazy" src="${flags[teams[p.name]]}"/></td>
+                            <td>${p.name}</td>
+                            <td>${p.timePlayed.toTime()}</td>
+                            <td>${/*p.connected ? 'Since ' + (unixTime - p.connectedSince).toTime() : */(unixTime - p.lastSeen).toTime() + ' ago'}</td>
+                          </tr>`
                 }
                 tbody.innerHTML = html;
             }
 
-            function formatdate(timeplayed) {
-                var hour = Math.floor(timeplayed / 3600);
-                var minuteSec = timeplayed % 3600;
-                var minute = Math.floor(minuteSec / 60);
-                var remainingSec = minuteSec % 60;
-                var second = Math.ceil(remainingSec);
+            Number.prototype.toTime = function () {
+                let res;
 
-                return (hour??"0") + "h " + (minute??"00") + "m " + (second??"00") +"s"
+                if (this >= 86400) res = Math.floor(this/86400) + 'd ' + Math.floor((this%86400)/3600) + 'h';
+                else if (this >= 3600) res = Math.floor(this/3600) + 'h ' + Math.floor((this%3600)/60) + 'm';
+                else if (this >= 60) res = Math.floor(this / 60) + 'm ' + this%60 + 's';
+                else res = this + 's';
+
+                return res;
             }
         </script>
+    </div>
+    <div id="end" class="hide">
+        <h2>The end !</h2>
+        <p class="entrance">
+            Yes it is the end, unfortunately (or fortunately).
+            Don't be sad, it's an end to a better future event. Regardless of the result, I loved doing these small projects that I shared in open source on <a href="https://github.com/dadodasyra/CityOfNations">Github.</a><br>
+            So I decided to provide you with final stats when the end of the city is official.<br>
+            Data collected at 08/08 21h~. All date are with UTC+2.<br>
+        </p>
+        <h2>Global</h2>
+        <div class="finalstats">
+            <div class="block">
+                <h3>10 000</h3>
+                <p>Number of pings made to the server for the stats of connected players (1 ping/min)</p>
+            </div>
+            <div class="block">
+                <h3>229~</h3>
+                <p>Number of cumulative days of time played for all players</p>
+            </div>
+            <div class="block">
+                <h3>1.757.053</h3>
+                <p>Number of emeralds collected by all teams</p>
+            </div>
+        </div>
+        <div class="finalstats">
+            <div class="block">
+                <h3>90</h3>
+                <p>Max players connected at the same time, at 02/08 21h</p>
+            </div>
+            <div class="block">
+                <h3>35</h3>
+                <p>Average players connected at the same time</p>
+            </div>
+        </div>
+        <h2>Teams</h2>
+        <div class="finalstats">
+            <div class="block">
+                <h4>835.411 France</h4>
+                <p>Winners of the event in terms of emerald</p>
+            </div>
+            <div class="block">
+                <h4>France, 56 days</h4>
+                <p>Most important playing time</p>
+            </div>
+            <div class="block">
+                <h4>Germans</h4>
+                <p>Most salty team of the event. Before the Spaniards (incredible)</p>
+            </div>
+        </div>
+        <h2>Players</h2>
+        <div class="finalstats">
+            <div class="block">
+                <h4>Shadoune666, ESPAÑA</h4>
+                <p>Best killer</p>
+            </div>
+            <div class="block">
+                <h4>Niimbus_, 6 days, 7 hours</h4>
+                <p>Most important playing time</p>
+            </div>
+            <div class="block">
+                <h4>311.504, Nino_Mssclick</h4>
+                <p>Person who farmed the most emerald</p>
+            </div>
+        </div>
+        <iframe id="emeraldsbyteam" height="411" loading="lazy"
+                seamless
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRVbYRo69HL0LB8IEgTKXyRid46LYFBwTnM10XtYb7B5bIvzhvtfXS52LPrkwAEGnQqZUOkRNtjsVfn/pubchart?oid=1906415762&format=interactive"
+                width="665"></iframe>
+        <h2>Players registered by teams</h2>
+        <p class="entrance">
+            Players:<br>
+            - 22 French <br>
+            - 20 Italians<br>
+            - 25 Spaniards<br>
+            - 24 German<br>
+            - 33 USA<br>
+            - 40 Staffs<br>
+        </p>
     </div>
     <div id="about" class="hide">
         <h2>Credits</h2>
@@ -172,6 +259,7 @@
     <script>
         window.setInterval(function () {
             reloadIFrame()
+            displayTab();
         }, 60000);
 
         async function reloadIFrame() {
