@@ -139,13 +139,24 @@
                             <td><img loading="lazy" src="https://minotar.net/avatar/${p.name}/8.png"/></td>
                             <td><img loading="lazy" src="${flags[teams[p.name]]}"/></td>
                             <td>${p.name}</td>
-                            <td>${p.timePlayed.toTime()}</td>
+                            <td>${formatdate(p.timePlayed)}</td>
                             <td>${/*p.connected ? 'Since ' + (unixTime - p.connectedSince).toTime() : */(unixTime - p.lastSeen).toTime() + ' ago'}</td>
                           </tr>`
                 }
                 tbody.innerHTML = html;
             }
 
+            function formatdate(timeplayed) {
+                let days = Math.floor(timeplayed / 86400);
+                let daysSec = timeplayed % 86400;
+                let hour = Math.floor(daysSec / 3600);
+                let minuteSec = daysSec % 3600;
+                let minute = Math.floor(minuteSec / 60);
+                let remainingSec = minuteSec % 60;
+                let second = Math.ceil(remainingSec);
+
+                return (days??"0") + "d " + (hour??"0 ") + "h " + (minute??"00") + "m " + (second??"00") +"s"
+            }
             Number.prototype.toTime = function () {
                 let res;
 
