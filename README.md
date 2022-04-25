@@ -1,3 +1,4 @@
+[![forthebadge](https://forthebadge.com/images/badges/0-percent-optimized.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/as-seen-on-tv.svg)](https://forthebadge.com)[![forthebadge](https://forthebadge.com/images/badges/works-on-my-machine.svg)](https://forthebadge.com)
 # CityOfNations Stats & Streamhack bot
 Cette repo contient tous mes projets sur la cité des nations. (https://city.dadodasyra.fr)
 A noter que vous ne pourrez pas réutiliser le code du Gscript pour les stats. Le lien d'api pour récupérer les ping du serveur est privé pour éviter de l'abus de spam dessus.
